@@ -1,27 +1,31 @@
+/* 1. ESTRUCTURA GENERAL CON CSS GRID*/
 .login-body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #fdfbf1 0%, #f5e6c4 100%); /* Degradado suave crema */
+    background: linear-gradient(135deg, #fdfbf1 0%, #f5e6c4 100%);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
+    
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-content: center;   /* Centra el contenido verticalmente */
 }
 
 header {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 header img {
-    width: 70px; /* Tamaño del logo de pan */
+    width: 70px;
     height: auto;
 }
 
 header h1 {
-    color: #5c4033; /* Marrón oscuro artesanal */
+    color: #5c4033;
     font-family: 'Georgia', serif;
     font-size: 2.2em;
     margin: 10px 0 5px 0;
@@ -33,13 +37,14 @@ header h1 {
     font-size: 0.95em;
     margin: 0;
 }
+
 .form-container {
     background-color: #ffffff;
     padding: 35px 40px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(92, 64, 51, 0.08); /* Sombra suave trasera */
+    box-shadow: 0 10px 30px rgba(92, 64, 51, 0.08);
     width: 100%;
-    max-width: 380px;
+    max-width: 380px; /* Tamaño ideal para computadoras */
     box-sizing: border-box;
 }
 
@@ -56,22 +61,27 @@ header h1 {
     text-align: center;
     margin: 0 0 25px 0;
 }
+
+form {
+    display: grid;
+    row-gap: 5px; /* Espaciado automático gracias a Grid */
+}
+
 form label {
     display: block;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     color: #444444;
     font-size: 0.9em;
 }
 
-/* Contenedor relativo para posicionar el ícono dentro */
+/* Contenedor relativo para posicionar el ícono */
 .input-group {
     position: relative;
     width: 100%;
-    margin-bottom: 20px; /* Controla la separación sin usar <br> */
 }
 
-/* El ícono flotante */
 .input-group .icon {
     position: absolute;
     left: 15px;
@@ -82,11 +92,10 @@ form label {
     pointer-events: none;
 }
 
-/* El cuadro de texto */
 .form-container input[type="text"],
 .form-container input[type="password"] {
     width: 100%;
-    padding: 12px 15px 12px 42px; /* 42px a la izquierda para no tapar el ícono */
+    padding: 12px 15px 12px 42px; /* Espacio izquierdo libre para el ícono */
     border: 1px solid #e6e1da;
     border-radius: 8px;
     background-color: #fcfcf9;
@@ -101,23 +110,24 @@ form input[type="checkbox"] {
 }
 
 form input[type="checkbox"] + label {
-    display: inline; /* Se alinea al lado del cuadro */
+    display: inline;
     font-weight: normal;
     color: #666666;
     font-size: 0.9em;
-    vertical-align: middle;
+    
 }
+
 form button[type="submit"] {
     width: 100%;
     padding: 14px;
-    background-color: #ffcc66; /* Amarillo/Dorado de tu muestra */
+    background-color: #ffcc66;
     color: #5c4033;
     border: none;
     border-radius: 8px;
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 20px;
     transition: background-color 0.2s;
 }
 
@@ -128,7 +138,7 @@ form button[type="submit"]:hover {
 form a {
     display: block;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 20px;
     color: #8d6e63;
     text-decoration: none;
     font-size: 0.9em;
@@ -137,4 +147,22 @@ form a {
 
 form a:hover {
     text-decoration: underline;
+}
+
+/* Media querris*/
+@media (max-width: 480px) {
+    .login-body {
+        padding: 15px;
+        align-content: start; /* En móvil, que empiece desde arriba */
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .form-container {
+        padding: 25px 20px;
+        max-width: 100%; /* Ocupa todo el ancho disponible del celular */
+        border-radius: 12px;
+    }
 }
