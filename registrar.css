@@ -1,17 +1,22 @@
+/*  1. ESTRUCTURA GENERAL CON CSS GRID */
 .registro-body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #fdfbf1 0%, #f5e6c4 100%);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    
+    /* Aplicamos Grid Layout en el body */
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 }
+
 header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 header img {
@@ -39,7 +44,7 @@ header h1 {
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(92, 64, 51, 0.06);
     width: 100%;
-    max-width: 400px; /* Un poquito más ancho para comodidad de los textos */
+    max-width: 400px; /* Un poquito más ancho para los campos de registro */
     box-sizing: border-box;
 }
 
@@ -54,12 +59,19 @@ header h1 {
     color: #666666;
     font-size: 0.9em;
     text-align: center;
-    margin: 0 0 25px 0;
+    margin: 0 0 20px 0;
 }
+
+form {
+    display: grid;
+    row-gap: 3px; /* El Grid controla la separación limpia de campos */
+}
+
 form label {
     display: block;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-top: 8px;
+    margin-bottom: 4px;
     color: #444444;
     font-size: 0.85em;
 }
@@ -67,7 +79,6 @@ form label {
 .input-group {
     position: relative;
     width: 100%;
-    margin-bottom: 15px; /* Separación uniforme */
 }
 
 .input-group .icon {
@@ -84,7 +95,7 @@ form label {
 .form-container input[type="email"],
 .form-container input[type="password"] {
     width: 100%;
-    padding: 11px 15px 11px 42px; /* Espacio para el ícono */
+    padding: 11px 15px 11px 42px; /* Espacio para que el texto no tape el ícono */
     border: 1px solid #e6e1da;
     border-radius: 8px;
     background-color: #fcfcf9;
@@ -93,8 +104,8 @@ form label {
 }
 
 .terminos-container {
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 15px;
 }
 
 form input[type="checkbox"] {
@@ -121,7 +132,7 @@ form button[type="submit"] {
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 10px;
     transition: background-color 0.2s;
 }
 
@@ -131,7 +142,7 @@ form button[type="submit"]:hover {
 
 form p {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 20px;
     font-size: 0.9em;
     color: #333333;
 }
@@ -144,4 +155,22 @@ form p a {
 
 form p a:hover {
     text-decoration: underline;
+}
+
+/* 7. MEDIA QUERIES (Responsivo para Celulares en Registro) */
+@media (max-width: 480px) {
+    .registro-body {
+        padding: 15px;
+        align-content: start;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .form-container {
+        padding: 20px 20px;
+        max-width: 100%;
+        border-radius: 12px;
+    }
 }
